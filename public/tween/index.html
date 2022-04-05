@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+    />
+    <title>Tween Animation</title>
+    <link rel="stylesheet" href="./assets/base.css" />
+    <link rel="stylesheet" href="./assets/fontello.css" />
+    <link rel="stylesheet" href="./assets/style.css" />
+	<script src="./assets/tween.js"></script>
+    <style>
+      canvas {
+        float: left;
+      }
+      .tool {
+        text-align: left;
+        margin-left: 620px;
+      }
+      p {
+        margin-bottom: 20px;
+      }
+      label {
+        padding-right: 5px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="content">
+      <div class="main grid">
+        <h2>Tween Animation</h2>
+        <canvas id="canvas" width="600" height="600"></canvas>
+        <div class="tool">
+          <p id="tween">
+            Tween：<br /><label
+              ><input
+                name="tween"
+                type="radio"
+                value="Linear"
+                checked=""
+              />&nbsp;Linear </label
+            ><label
+              ><input
+                name="tween"
+                type="radio"
+                value="Quad"
+              />&nbsp;Quadratic </label
+            ><label
+              ><input
+                name="tween"
+                type="radio"
+                value="Cubic"
+              />&nbsp;Cubic </label
+            ><label
+              ><input
+                name="tween"
+                type="radio"
+                value="Quart"
+              />&nbsp;Quartic </label
+            ><label
+              ><input
+                name="tween"
+                type="radio"
+                value="Quint"
+              />&nbsp;Quintic </label
+            ><label
+              ><input
+                name="tween"
+                type="radio"
+                value="Sine"
+              />&nbsp;Sinusoidal </label
+            ><br /><label
+              ><input
+                name="tween"
+                type="radio"
+                value="Expo"
+              />&nbsp;Exponential </label
+            ><label
+              ><input
+                name="tween"
+                type="radio"
+                value="Circ"
+              />&nbsp;Circular </label
+            ><label
+              ><input
+                name="tween"
+                type="radio"
+                value="Elastic"
+              />&nbsp;Elastic </label
+            ><label
+              ><input
+                name="tween"
+                type="radio"
+                value="Back"
+              />&nbsp;Back </label
+            ><label
+              ><input name="tween" type="radio" value="Bounce" />&nbsp;Bounce
+            </label>
+          </p>
+          <p id="ease">
+            ease：<br /><label
+              ><input
+                name="ease"
+                type="radio"
+                value="easeIn"
+                checked=""
+              />&nbsp;easeIn </label
+            ><label
+              ><input
+                name="ease"
+                type="radio"
+                value="easeOut"
+              />&nbsp;easeOut </label
+            ><label
+              ><input
+                name="ease"
+                type="radio"
+                value="easeInOut"
+              />&nbsp;easeInOut
+            </label>
+          </p>
+        </div>
+      </div>
+    </div>
+    <script>
+      var canvas = document.getElementById("canvas"),
+        ctx = canvas.getContext("2d"),
+        W = canvas.width,
+        H = canvas.height,
+        isRunning = false,
+        tweenType = "linear",
+        easeType = "easeIn";
+
+      ctx.lineWidth = 2;
+
+      document
+        .getElementById("tween")
+        .addEventListener("click", clickFn, false);
+      document.getElementById("ease").addEventListener("click", clickFn, false);
+
+      function fnName(t, e) {
+        return typeof Tween[t] == "function" ? Tween[t] : Tween[t][e];
+      }
+
+      function clickFn(e) {
+        e = e || window.event;
+        node = e.target || e.srcElement;
+        if (node.nodeName != "INPUT") return;
+        if (node.name == "tween") {
+          tweenType = node.value;
+        } else {
+          easeType = node.value;
+        }
+        draw(fnName(tweenType, easeType));
+      }
+
+      function draw(fn) {
+        if (isRunning) return;
+        var start = new Date(),
+          duration = 1000,
+          yLen = 300,
+          xLen = 500,
+          space = xLen / duration,
+          y = 0,
+          pos = [],
+          t,
+          gradient = ctx.createRadialGradient(0, 0, 0, 0, 0, 15);
+
+        gradient.addColorStop(0, "hsl(200,100%,85%)");
+        gradient.addColorStop(1, "hsl(200,100%,50%)");
+
+        ctx.clearRect(0, 0, W, H);
+        ctx.save();
+        ctx.beginPath();
+        ctx.strokeStyle = "hsl(200,50%,50%)";
+        ctx.moveTo(10, 150);
+        ctx.lineTo(10, 450);
+        ctx.lineTo(510, 450);
+        ctx.lineTo(510, 150);
+        ctx.closePath();
+        ctx.stroke();
+        ctx.restore();
+
+        function orbit() {
+          ctx.save();
+          ctx.translate(10, 450);
+          ctx.strokeStyle = "hsl(30,100%,50%)";
+          ctx.beginPath();
+          ctx.clearRect(0, -450, 500, 149);
+          ctx.clearRect(0, -300, 500, 300);
+          ctx.clearRect(0, 1, 500, 150);
+          ctx.moveTo(0, 0);
+          pos.forEach(function (n, i) {
+            ctx.lineTo(n.x, n.y);
+          });
+          ctx.stroke();
+          ctx.restore();
+        }
+
+        function ball(y) {
+          ctx.save();
+          ctx.clearRect(520, 0, 90, 600);
+          ctx.translate(540, 450 - y);
+          ctx.fillStyle = gradient;
+          ctx.beginPath();
+          ctx.arc(0, 0, 15, 0, Math.PI * 2, false);
+          ctx.fill();
+          ctx.restore();
+        }
+
+        ~(function animate() {
+          isRunning = true;
+          t = new Date() - start;
+          if (t > duration) {
+            pos.push({ x: xLen, y: -yLen });
+            orbit();
+            ball(yLen);
+            isRunning = false;
+            return;
+          }
+          y = fn(t, 0, yLen, duration);
+          pos.push({ x: t * space, y: -y });
+          orbit();
+          ball(y);
+          requestAnimationFrame(animate);
+        })();
+      }
+
+      document.getElementsByName("tween")[0].click();
+    </script>
+  </body>
+</html>

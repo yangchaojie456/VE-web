@@ -1,0 +1,29 @@
+.app-container {
+  width: 100vw;
+  height: 100vh;
+  min-width: 1200px;
+  min-height: 800px;
+  display: flex;
+  flex-direction: column;
+  .app-container-header {
+    height: 30px;
+    flex-shrink: 0;
+  }
+  .app-container-editing {
+    display: flex;
+    height: 70vh;
+    min-height: 560px;
+    flex-shrink: 0;
+    .app-container-editing-player {
+      width: 640px;
+    }
+    .app-container-editing-coder {
+      width: calc(100vw - 640px);
+      min-width: 560px;
+    }
+  }
+  .app-container-timeline {    
+    height: calc(100vh - 30px - 70vh);
+    max-height: calc(100vh - 30px - 560px);
+  }
+}

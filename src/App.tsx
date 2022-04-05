@@ -1,27 +1,26 @@
 import React from "react";
-import logo from "logo.svg";
-import "./App.css";
-
+import "./App.scss";
+import VideoPlayer from "video-player";
+import Editor from "editor";
+import Timeline from "timeline";
+import Header from "header";
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-      <p>
-        <span>格式化测试</span>
-      </p>
+    <div className="app-container">
+      <div className="app-container-header">
+        <Header></Header>
+      </div>
+      <div className="app-container-editing">
+        <div className="app-container-editing-player">
+          <VideoPlayer />
+        </div>
+        <div className="app-container-editing-coder">
+          <Editor />
+        </div>
+      </div>
+      <div className="app-container-timeline">
+        <Timeline />
+      </div>
     </div>
   );
 }

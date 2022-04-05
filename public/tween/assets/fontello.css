@@ -1,0 +1,332 @@
+[class^="icon-"]:before,
+[class*=" icon-"]:before {
+  font-family: "fontello";
+  font-style: normal;
+  font-weight: normal;
+  speak: none;
+  display: inline-block;
+  text-decoration: inherit;
+  width: 1em;
+  margin-right: 0.2em;
+  text-align: center;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1em;
+  margin-left: 0.2em;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+.icon-home:before {
+  content: "\e800";
+}
+.icon-ok:before {
+  content: "\e801";
+}
+.icon-ok-circled:before {
+  content: "\e802";
+}
+.icon-bookmark:before {
+  content: "\e803";
+}
+.icon-trash-empty:before {
+  content: "\e804";
+}
+.icon-doc:before {
+  content: "\e805";
+}
+.icon-user:before {
+  content: "\e806";
+}
+.icon-tag:before {
+  content: "\e807";
+}
+.icon-tags:before {
+  content: "\e808";
+}
+.icon-heart-empty:before {
+  content: "\e809";
+}
+.icon-cancel:before {
+  content: "\e80a";
+}
+.icon-heart:before {
+  content: "\e80b";
+}
+.icon-up-open:before {
+  content: "\e80c";
+}
+.icon-down-open:before {
+  content: "\e80d";
+}
+.icon-left-open:before {
+  content: "\e80e";
+}
+.icon-right-open:before {
+  content: "\e80f";
+}
+.icon-star:before {
+  content: "\e810";
+}
+.icon-star-empty:before {
+  content: "\e811";
+}
+.icon-star-half:before {
+  content: "\e812";
+}
+.icon-camera:before {
+  content: "\e813";
+}
+.icon-picture:before {
+  content: "\e814";
+}
+.icon-video:before {
+  content: "\e815";
+}
+.icon-cancel-circled:before {
+  content: "\e816";
+}
+.icon-plus:before {
+  content: "\e817";
+}
+.icon-plus-circled:before {
+  content: "\e818";
+}
+.icon-minus:before {
+  content: "\e819";
+}
+.icon-minus-circled:before {
+  content: "\e81a";
+}
+.icon-mail:before {
+  content: "\e81b";
+}
+.icon-lock:before {
+  content: "\e81c";
+}
+.icon-lock-open:before {
+  content: "\e81d";
+}
+.icon-forward:before {
+  content: "\e81e";
+}
+.icon-edit:before {
+  content: "\e81f";
+}
+.icon-comment:before {
+  content: "\e820";
+}
+.icon-cog:before {
+  content: "\e821";
+}
+.icon-resize-full:before {
+  content: "\e822";
+}
+.icon-resize-small:before {
+  content: "\e823";
+}
+.icon-attach:before {
+  content: "\e824";
+}
+.icon-font:before {
+  content: "\e825";
+}
+.icon-bold:before {
+  content: "\e826";
+}
+.icon-italic:before {
+  content: "\e827";
+}
+.icon-spin1:before {
+  content: "\e830";
+}
+.icon-spin2:before {
+  content: "\e831";
+}
+.icon-spin3:before {
+  content: "\e832";
+}
+.icon-spin4:before {
+  content: "\e834";
+}
+.icon-spin5:before {
+  content: "\e838";
+}
+.icon-spin6:before {
+  content: "\e839";
+}
+.icon-twitter:before {
+  content: "\f099";
+}
+.icon-facebook:before {
+  content: "\f09a";
+}
+.icon-github-circled:before {
+  content: "\f09b";
+}
+.icon-rss:before {
+  content: "\f09e";
+}
+.icon-resize-full-alt:before {
+  content: "\f0b2";
+}
+.icon-menu:before {
+  content: "\f0c9";
+}
+.icon-gplus:before {
+  content: "\f0d5";
+}
+.icon-comment-empty:before {
+  content: "\f0e5";
+}
+.icon-doc-text:before {
+  content: "\f0f6";
+}
+.icon-angle-double-left:before {
+  content: "\f100";
+}
+.icon-angle-double-right:before {
+  content: "\f101";
+}
+.icon-angle-double-up:before {
+  content: "\f102";
+}
+.icon-angle-double-down:before {
+  content: "\f103";
+}
+.icon-angle-left:before {
+  content: "\f104";
+}
+.icon-angle-right:before {
+  content: "\f105";
+}
+.icon-angle-up:before {
+  content: "\f106";
+}
+.icon-angle-down:before {
+  content: "\f107";
+}
+.icon-reply:before {
+  content: "\f112";
+}
+.icon-folder-empty:before {
+  content: "\f114";
+}
+.icon-folder-open-empty:before {
+  content: "\f115";
+}
+.icon-code:before {
+  content: "\f121";
+}
+.icon-star-half-alt:before {
+  content: "\f123";
+}
+.icon-ellipsis:before {
+  content: "\f141";
+}
+.icon-ok-squared:before {
+  content: "\f14a";
+}
+.icon-weibo:before {
+  content: "\f18a";
+}
+.icon-file-pdf:before {
+  content: "\f1c1";
+}
+.icon-file-word:before {
+  content: "\f1c2";
+}
+.icon-file-excel:before {
+  content: "\f1c3";
+}
+.icon-file-powerpoint:before {
+  content: "\f1c4";
+}
+.icon-file-image:before {
+  content: "\f1c5";
+}
+.icon-qq:before {
+  content: "\f1d6";
+}
+.icon-wechat:before {
+  content: "\f1d7";
+}
+.icon-header:before {
+  content: "\f1dc";
+}
+.animate-spin {
+  -moz-animation: spin 2s infinite linear;
+  -o-animation: spin 2s infinite linear;
+  -webkit-animation: spin 2s infinite linear;
+  animation: spin 2s infinite linear;
+  display: inline-block;
+}
+@-moz-keyframes spin {
+  0% {
+    -moz-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -moz-transform: rotate(359deg);
+    -o-transform: rotate(359deg);
+    -webkit-transform: rotate(359deg);
+    transform: rotate(359deg);
+  }
+}
+@-webkit-keyframes spin {
+  0% {
+    -moz-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -moz-transform: rotate(359deg);
+    -o-transform: rotate(359deg);
+    -webkit-transform: rotate(359deg);
+    transform: rotate(359deg);
+  }
+}
+@-o-keyframes spin {
+  0% {
+    -moz-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -moz-transform: rotate(359deg);
+    -o-transform: rotate(359deg);
+    -webkit-transform: rotate(359deg);
+    transform: rotate(359deg);
+  }
+}
+@-ms-keyframes spin {
+  0% {
+    -moz-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -moz-transform: rotate(359deg);
+    -o-transform: rotate(359deg);
+    -webkit-transform: rotate(359deg);
+    transform: rotate(359deg);
+  }
+}
+@keyframes spin {
+  0% {
+    -moz-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -moz-transform: rotate(359deg);
+    -o-transform: rotate(359deg);
+    -webkit-transform: rotate(359deg);
+    transform: rotate(359deg);
+  }
+}
