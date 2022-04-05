@@ -1,10 +1,6 @@
 # VE-web - a video editor (Edit the video by writing js code to draw the animation)
 
-<div align="center">
-
-<img src="https://prd-bs-oss.oss-cn-shanghai.aliyuncs.com/down/updates/demonstration.gif" alt="screenshot" />
-
-</div>
+![demonstration](https://prd-bs-oss.oss-cn-shanghai.aliyuncs.com/down/updates/demonstration.gif)
 
 ## Install
 
