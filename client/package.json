@@ -1,0 +1,66 @@
+{
+  "name": "video-editor-web",
+  "version": "0.1.0",
+  "private": true,
+  "author": "yang.chaojie",
+  "description": "video edit for web",
+  "scripts": {
+    "start": "electron ./src/index.js dev",
+    "package32": "electron-builder --ia32",
+    "package": "electron-builder"
+  },
+  "keywords": [
+    "Electron",
+    "video",
+    "edit",
+    "react",
+    "typescript"
+  ],
+  "main": "./src/index.js",
+  "dependencies": {
+    "electron-log": "^4.4.6",
+    "electron-store": "^8.0.1",
+    "electron-updater": "^4.6.5",
+    "fs-extra": "^10.0.1",
+    "mime": "^3.0.0"
+  },
+  "devDependencies": {
+    "electron": "^17.0.1",
+    "electron-builder": "^22.14.13"
+  },
+  "build": {
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true
+    },
+    "productName": "VE-web",
+    "appId": "com.chaojie.yang",
+    "copyright": "yangchaojie",
+    "directories": {
+      "output": "package"
+    },
+    "extraResources": [
+      {
+        "from": "./build",
+        "to": "./build"
+      },
+      {
+        "from": "./ffmpeg",
+        "to": "./ffmpeg"
+      }
+    ],
+    "win": {
+      "icon": "build/favicon.ico"
+    },
+    "files": [
+      "!.gitignore",
+      "!README.*"
+    ],
+    "publish": [
+      {
+        "provider": "generic",
+        "url": ""
+      }
+    ]
+  }
+}

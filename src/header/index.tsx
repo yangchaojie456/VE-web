@@ -251,6 +251,9 @@ export default function Header() {
       return;
     }
 
+    currentWidget.saveFlag = true;
+    currentWidget.lastModify = new Date().getTime();
+
     const compilerOptions = {
       compilerOptions: {
         baseUrl: "./src",
