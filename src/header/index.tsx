@@ -51,6 +51,7 @@ export default function Header() {
 
   const handleCancel = () => {
     setIsModalVisible(false);
+    setWidgetName("");
   };
   const minimize = () => {
     console.log("最小化");
@@ -216,6 +217,7 @@ export default function Header() {
       setStore({
         ...store,
         currentWidgetId: id,
+        currentWidgetSaveFlag: false,
         activeWidget: [...store.activeWidget],
       });
 
