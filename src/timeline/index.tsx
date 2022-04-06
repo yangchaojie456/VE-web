@@ -81,9 +81,9 @@ export default function Timeline() {
     // setVideoDur(store.video.duration);
   }, [store.widgetList]);
 
-  console.log(videoDur);
-  console.log(layout);
-  console.log(widgetArr);
+  // console.log(videoDur);
+  // console.log(layout);
+  // console.log(widgetArr);
 
   const formatTime = (time: any) => {
     if (typeof time == "number") {
@@ -125,6 +125,12 @@ export default function Timeline() {
       ...store,
     });
     setIsModalVisible(false);
+  };
+  const changeStoreCurrentId = (id: number) => {
+    setStore({
+      ...store,
+      currentWidgetId: id,
+    });
   };
   return (
     <div className="timeline-container">
@@ -202,10 +208,16 @@ export default function Timeline() {
                         props: widget.id,
                       });
                     }}
+                    onClick={() => {
+                      changeStoreCurrentId(widget.id);
+                    }}
                     title={`start:${formatTime(
                       widget.start
                     )} - end:${formatTime(widget.end)}`}
-                    className="current timeline-container-des-part-widget"
+                    className={
+                      "timeline-container-des-part-widget" +
+                      (store.currentWidgetId == widget.id ? " current" : "")
+                    }
                     key={String(widget.id)}
                   >
                     <p>{widget.name}</p>
