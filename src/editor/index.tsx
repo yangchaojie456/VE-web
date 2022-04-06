@@ -76,12 +76,6 @@ export default function Editor() {
   };
   useEffect(() => {
     if (store.currentWidgetId) {
-      // let index = store.activeWidget.findIndex(
-      //   (widget) => widget.id == store.currentWidgetId
-      // );
-      // if (index < 0) {
-      //   return;
-      // }
       if (store.activeWidget[activeIndex].code != code) {
         store.activeWidget[activeIndex].saveFlag = false;
         store.activeWidget[activeIndex].code = code;
@@ -134,11 +128,13 @@ export default function Editor() {
         keybindings: [monaco.KeyMod.CtrlCmd | monaco.KeyCode.KeyS], // 绑定快捷键
         run: () => {
           console.log("保存", activeIndex);
-          saveWidget();
+          setTimeout(() => {
+            saveWidget();
+          }, 500);
         },
       });
     }
-  }, [activeIndex, code, errors, ipcRenderer]);
+  }, [activeIndex, code, errors]);
 
   const onTabsChange = (activeId: string) => {
     console.log("onTabsChange:" + activeId);
@@ -199,8 +195,8 @@ export default function Editor() {
   };
   const saveWidget = (close?: boolean) => {
     notification.destroy();
-    console.log("saveWidget", errors);
 
+    let errors = store.activeWidget[activeIndex].codeError;
     // error?
     if (errors.length > 0) {
       errors.forEach((err) => {
@@ -220,7 +216,7 @@ export default function Editor() {
 
     store.activeWidget[activeIndex].saveFlag = true;
     store.activeWidget[activeIndex].lastModify = new Date().getTime();
-
+    console.log(activeIndex, "============");
     const compilerOptions = {
       compilerOptions: {
         baseUrl: "./src",
