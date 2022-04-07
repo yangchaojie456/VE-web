@@ -1,5 +1,7 @@
 # VE-web - a video editor (Edit the video by writing js code to draw the animation)
 
+You can write JS code, using the pixi.js engine, to add the desired effect of the footage
+
 ![demonstration](./public/demonstration.gif)
 [demo](https://prd-bs-oss.oss-cn-shanghai.aliyuncs.com/down/updates/demonstration.gif)
 
