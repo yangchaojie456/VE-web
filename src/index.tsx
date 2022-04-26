@@ -7,6 +7,19 @@ import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import Provider from "Provider";
 
+//@ts-ignore
+import WebFont from "webfontloader";
+
+WebFont.load({
+  google: {
+    families: ["Heebo", "Almarai", "Archivo", "Tajawal"],
+  },
+
+  active() {
+    console.log(123);
+  },
+});
+
 ReactDOM.render(
   // <React.StrictMode>
   <Provider>
