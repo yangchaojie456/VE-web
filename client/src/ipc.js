@@ -24,7 +24,17 @@ module.exports = function initIpc(win) {
     });
   });
 
-  ipcMain.on("end-parsing", (event, preload) => {
+  ipcMain.on("sendScreenshot", (event, preload) => {
+    let captureData = preload.captureData;
+    captureData.forEach((item) => {
+      let { name, index, startTime, endTime, base64_URL } = item;
+      console.log(startTime, endTime);
+      if (!base64ObjCache[`${startTime}_${endTime}`]) {
+        base64ObjCache[`${startTime}_${endTime}`] = [];
+      }
+      base64ObjCache[`${startTime}_${endTime}`].push(base64_URL);
+    });
+
     let cancelFlag = false;
     ipcMain.once("stopExport", () => {
       cancelFlag = true;
@@ -41,6 +51,7 @@ module.exports = function initIpc(win) {
       if (Object.hasOwnProperty.call(base64ObjCache, key)) {
         const framesArr = base64ObjCache[key];
         let [startTime, endTime] = key.split("_");
+
         let shouldFrames = (endTime - startTime) * 25;
 
         let direction = true;
@@ -108,6 +119,7 @@ module.exports = function initIpc(win) {
         base64ObjCache[`${startTime}_${endTime}`] = [];
       }
       base64ObjCache[`${startTime}_${endTime}`].push(base64_URL);
+      console.log(`${startTime}_${endTime}`);
     }
   );
   ipcMain.on("minimize", () => {

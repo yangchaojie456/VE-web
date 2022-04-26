@@ -24,7 +24,7 @@ import "./index.scss";
 import useShell from "hooks/shell";
 
 let timer: any;
-let captureData = [];
+let captureData: Array<any> = [];
 let timeRange = {
   index: 0,
   startTime: 0,
@@ -70,6 +70,7 @@ export default function Header() {
     if (store.video.videoRef && store.video.videoRef.current)
       store.video.videoRef.current.pause();
 
+    clearInterval(timer);
     setTimeBucket([]);
     ipcRenderer.send("stopExport");
     setIsModalVisibleProgress(false);
@@ -110,20 +111,38 @@ export default function Header() {
         setCaptureProgress(0);
         setShowSave(false);
         let totalIndex =
-          (timeBucketTemp.join("").match(/1/g) || []).length * 28;
+          (timeBucketTemp.join("").match(/1/g) || []).length * 25;
 
+        // init timeRange.startTime timeRange.endTime
+        if (store.video.videoRef && store.video.videoRef.current) {
+          console.log(timeBucketTemp);
+          console.log("=========max");
+          let nextTime = timeBucketTemp.indexOf(1);
+          if (nextTime == -1) {
+            message.info("no current widget", 3);
+            return;
+          }
+          timeRange.startTime = nextTime;
+          let i = nextTime;
+          while (timeBucketTemp[i] == 1) {
+            i++;
+          }
+          timeRange.endTime = i - 1;
+          console.log(timeRange.startTime);
+        }
+        captureData = [];
         timer = setInterval(() => {
           setCaptureProgress(Math.floor((timeRange.index / totalIndex) * 100));
-
-          ipcRenderer.send("screenshot", {
+          captureData.push({
             name: "yang",
             index: timeRange.index++,
             startTime: timeRange.startTime,
             endTime: timeRange.endTime,
             base64_URL: canvas.toDataURL(),
           });
+          console.log(timeRange.index);
+          console.log(new Date().getTime());
         }, 40);
-        console.log(store.video.path);
 
         ipcRenderer.send("start-parsing", { videoPath: store.video.path });
       }
@@ -144,13 +163,15 @@ export default function Header() {
     let min = Math.floor(store.video.currentTime);
     let max = Math.ceil(store.video.currentTime);
     if (!(timeBucket[min] == 1 && timeBucket[max] == 1)) {
+      console.log("timeBucket[min] == 1 && timeBucket[max] == 1");
       let nextTime = timeBucket.indexOf(1, max);
       if (nextTime == -1) {
         if (store.video.videoRef && store.video.videoRef.current) {
           store.video.videoRef.current.pause();
           clearInterval(timer);
           setTimeBucket([]);
-          ipcRenderer.send("end-parsing");
+          ipcRenderer.send("sendScreenshot", { captureData });
+          // ipcRenderer.send("end-parsing");
           setCaptureProgress(100);
           ipcRenderer.on("cache-data", (event: any, data: number) => {
             setCachePngProgress(Math.floor(data * 100));
